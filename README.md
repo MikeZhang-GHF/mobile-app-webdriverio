@@ -8,13 +8,10 @@ This is DevOps Mobile App Test Automation Framework in JavaScript
 - Install appium-desktop
 - Install android studio
 
-#### Run Appium Server
+#### Run Appium Server Locally
 - Run appium server
 ```sh
 appium -p 4724
-```
-
-```sh
 appium server -pa /wd/hub
 ```
 
