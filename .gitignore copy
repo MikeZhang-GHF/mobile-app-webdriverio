@@ -1,0 +1,4 @@
+/node_modules
+/app/ios
+.env
+/test/lab
