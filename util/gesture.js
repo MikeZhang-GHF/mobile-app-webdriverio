@@ -1,3 +1,6 @@
+// Description: Gesture utilities for Appium, such as, swiping, pinching, zooming, etc.
+
+// swipe gesture
 export const swipe = (direction, start, end, speed = 1000) => {
   // Validate the input
   if (start.x > 1 || start.x < 0 || start.y < 0 ||start.y > 1) {
