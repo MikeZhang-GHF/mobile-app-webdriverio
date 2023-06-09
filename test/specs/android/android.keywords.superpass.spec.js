@@ -4,7 +4,7 @@ describe('Superpass Test', () => {
 	const baseUrl = 'https://wma-dev.petro-canada.ca/backendapi';
 	const appID =
 		'//*[@resource-id="com.petrocanada.commercial_drivers.android:id/';
-	// Crendential data for e2e testing
+	// Test data for e2e testing
 	const cardNumber = '99354414030064';
 	const username = 'DevOpsTester';
 	const pinNumber = '6666';
