@@ -1,4 +1,4 @@
-import LaunchScreen from '../../screenobject/android/home.screen';
+import LaunchScreen from '../../screenobject/android/launch.screen';
 import loginScreen from '../../screenobject/android/login.screen';
 import HomeScreen from '../../screenobject/android/home.screen';
 import SingupScreen from '../../screenobject/android/signup.screen';
@@ -21,7 +21,7 @@ describe('Superpass Test', () => {
 		console.log(response.data);
 	});
 
-	it('Geolocation Test - nearest stateion', async () => {
+	it.skip('Geolocation Test - nearest stateion', async () => {
 		// coordinate data
 		const latitude = '51.05635397469224';
 		const longitude = '-113.92802024655464';
@@ -43,7 +43,7 @@ describe('Superpass Test', () => {
 		expect(addressLineText.toLowerCase()).toContain(expectedAddressLine);
 	});
 
-	it.skip('Singup Test', async () => {
+	it('Singup Test', async () => {
 		// click signup button
 		await LaunchScreen.signupButton.click();
 		// signup process

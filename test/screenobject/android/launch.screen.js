@@ -18,6 +18,7 @@ class LaunchScreen {
   }
 
   async setGeoLocation({ latitude, longitude, altitude }) {
+    console.log('setGeoLocation');
     await driver.setGeoLocation({ latitude, longitude, altitude });
   }
 

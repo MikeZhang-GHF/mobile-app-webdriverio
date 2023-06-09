@@ -1,4 +1,4 @@
-import { swipe } from '../../util/gesture';
+import { swipe } from '../../../util/gesture';
 
 class SingupScreen {
 	appID = '//*[@resource-id="com.petrocanada.commercial_drivers.android:id/';
@@ -6,6 +6,10 @@ class SingupScreen {
 
 	get iHaveCardButton() {
 		return $(this.appID + 'yesButton"]');
+	}
+
+	get nameInput() {
+		return $(this.appID + 'nameInput"]');
 	}
 
 	get cardNumberInput() {
@@ -46,38 +50,37 @@ class SingupScreen {
 
 	async singup({ userName, cardNumber, pinNumber, phoneNumber, password }) {
 		await this.iHaveCardButton.click();
-    await this.nameInput.setValue(userName);
-    // swipe up to show the card number input
-    await swipe({ direction: 'up', start: {x: 0.5, y: 0.5}, end: {x: 0.5, y: 0.1}, speed: 1000 });
+		await this.nameInput.setValue(userName);
+		// swipe up to show the card number input
+		await swipe({ x: 0.5, y: 0.5 }, { x: 0.5, y: 0.1 });
 		await this.cardNumberInput.setValue(cardNumber);
 		await this.pinNumberInput.setValue(pinNumber);
 		await this.confirmButton.click();
-    // wait for the OTP and input the OTP
-    driver.pause(3000);
+		// wait for the OTP and input the OTP
+		driver.pause(3000);
 		await this.phoneInput.setValue(phoneNumber);
 		await this.confirmButton.click();
-    // wait for the OTP
-    const timeForOTP = 7000;
-    await driver.pause(timeForOTP);
+		// wait for the OTP
+		const timeForOTP = 7000;
+		await driver.pause(timeForOTP);
 		await this.allowOTPButton.click();
 		await this.confirmButton.click();
-    driver.pause(3000);
-    // input password and confirm password
+		driver.pause(3000);
+		// input password and confirm password
 		await this.passwordInput.setValue(password);
 		await this.confirmInput.setValue(password);
-    // submit the form and wait for the success message
-    const maxRetry = 100;
-    let successTextView = '';
+		// submit the form and wait for the success message
+		const maxRetry = 100;
+		let successTextView = '';
 		for (let i = 0; i < maxRetry; i++) {
 			await this.confirmButton.click();
 			successTextView = await this.successTitle.getText();
-			if (successTextView.includes('Success')) 
-        break;
+			if (successTextView.includes('Success')) break;
 			driver.pause(500);
 		}
 
 		await this.confirmButton.click();
-    driver.pause(3000);
+		driver.pause(3000);
 	}
 }
 
