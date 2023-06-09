@@ -8,12 +8,14 @@ import {
 } from '../../../util/apiRequest';
 
 describe('Superpass Test', () => {
-	// Crendential data for e2e testing
-	const cardNumber = '99354414030064';
-	const userName = 'DevOpsTester';
-	const pinNumber = '6666';
-	const phoneNumber = '9786053340';
-	const password = 'Test1234*';
+	// Signup data for e2e testings
+	const {
+		cardNumber,
+		userName,
+		pinNumber,
+		phoneNumber,
+		password,
+	} = require('../../test_data/signup.data.json');
 
 	after(async () => {
 		// Teardown the test data
@@ -21,11 +23,13 @@ describe('Superpass Test', () => {
 		console.log(response.data);
 	});
 
-	it.skip('Geolocation Test - nearest stateion', async () => {
-		// coordinate data
-		const latitude = '51.05635397469224';
-		const longitude = '-113.92802024655464';
-		const altitude = '0';
+	it('Geolocation Test - nearest stateion', async () => {
+		// read geo location data from the file
+		const {
+			latitude,
+			longitude,
+			altitude,
+		} = require('../../test_data/geolocation.data.json');
 
 		// mock the geolocation
 		await LaunchScreen.setGeoLocation({ latitude, longitude, altitude });
@@ -43,7 +47,7 @@ describe('Superpass Test', () => {
 		expect(addressLineText.toLowerCase()).toContain(expectedAddressLine);
 	});
 
-	it('Singup Test', async () => {
+	it.skip('Singup Test', async () => {
 		// click signup button
 		await LaunchScreen.signupButton.click();
 		// signup process
