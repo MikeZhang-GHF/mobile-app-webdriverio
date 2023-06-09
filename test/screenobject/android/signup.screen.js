@@ -47,7 +47,8 @@ class SingupScreen {
 	async singup({ userName, cardNumber, pinNumber, phoneNumber, password }) {
 		await this.iHaveCardButton.click();
     await this.nameInput.setValue(userName);
-    await swipe({ direction: 'up' });
+    // swipe up to show the card number input
+    await swipe({ direction: 'up', start: {x: 0.5, y: 0.5}, end: {x: 0.5, y: 0.1}, speed: 1000 });
 		await this.cardNumberInput.setValue(cardNumber);
 		await this.pinNumberInput.setValue(pinNumber);
 		await this.confirmButton.click();
