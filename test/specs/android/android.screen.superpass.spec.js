@@ -1,5 +1,5 @@
 import LaunchScreen from '../../screenobject/android/launch.screen';
-import loginScreen from '../../screenobject/android/login.screen';
+import LoginScreen from '../../screenobject/android/login.screen';
 import HomeScreen from '../../screenobject/android/home.screen';
 import SingupScreen from '../../screenobject/android/signup.screen';
 import {
@@ -7,7 +7,8 @@ import {
 	deleteTestCard,
 } from '../../../util/apiRequest';
 
-describe('Superpass Test', () => {
+
+describe('SuperPass App Android Test Template', () => {
 	// Signup data for e2e testings
 	const {
 		cardNumber,
@@ -18,12 +19,10 @@ describe('Superpass Test', () => {
 	} = require('../../test_data/signup.data.json');
 
 	after(async () => {
-		// Teardown the test data
-		const response = await deleteTestCard(cardNumber, pinNumber);
-		console.log(response.data);
+		await deleteTestCard(cardNumber, pinNumber);
 	});
 
-	it.skip('Geolocation Test - nearest stateion', async () => {
+	it('should show the nearest gas station', async () => {
 		// read geo location data from the file
 		const {
 			latitude,
@@ -47,7 +46,7 @@ describe('Superpass Test', () => {
 		expect(addressLineText.toLowerCase()).toContain(expectedAddressLine);
 	});
 
-	it('Singup Test', async () => {
+	it('should signup', async () => {
 		// click signup button
 		await LaunchScreen.signupButton.click();
 		await SingupScreen.singup({
@@ -61,22 +60,22 @@ describe('Superpass Test', () => {
 		// Assert the welcome screen
 		const welcomeText = await HomeScreen.greetingMessage.getText();
 		expect(welcomeText).toContain('Good');
-		// logout for the next test case
-		HomeScreen.signout();
 	});
 
-	it('Login Test', async () => {
+	it('should signout', async () => {
+		HomeScreen.signout();
+		// Assert the launch screen welcome message
+		expect(await LaunchScreen.loginButton.isDisplayed()).toBe(true);
+	});
+
+	it('should login', async () => {
 		// click login button
 		await LaunchScreen.loginButton.click();
-		loginScreen.login(cardNumber, pinNumber);
+		await LoginScreen.login(cardNumber, password);
 		// wait for the login process
-		driver.pause(2000);
-
+		await driver.pause(2000);
 		// assert
 		const welcomeText = await HomeScreen.greetingMessage.getText();
-		console.log(welcomeText);
 		expect(welcomeText).toContain('Good');
-		// logout
-		await HomeScreen.signout();
 	});
 });

@@ -14,7 +14,7 @@ class LoginScreen {
 	}
 
 	async login(cardNumber, password) {
-		await this.cardNumberInput.setValue(cardNumber);
+		// await this.cardNumberInput.setValue(cardNumber);
 		await this.passwordInput.setValue(password);
 		await this.signinButton.click();
 	}
