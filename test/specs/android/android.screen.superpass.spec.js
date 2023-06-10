@@ -56,24 +56,20 @@ describe('SuperPass App Android Test Template', () => {
 			phoneNumber,
 			password,
 		});
-
 		// Assert the welcome screen
 		const welcomeText = await HomeScreen.greetingMessage.getText();
 		expect(welcomeText).toContain('Good');
 	});
 
 	it('should signout', async () => {
-		HomeScreen.signout();
-		// Assert the launch screen welcome message
-		expect(await LaunchScreen.loginButton.isDisplayed()).toBe(true);
+		await HomeScreen.signout();
+		expect(await LaunchScreen.loginButton.waitForDisplayed()).toBe(true);
 	});
 
 	it('should login', async () => {
 		// click login button
 		await LaunchScreen.loginButton.click();
 		await LoginScreen.login(cardNumber, password);
-		// wait for the login process
-		await driver.pause(2000);
 		// assert
 		const welcomeText = await HomeScreen.greetingMessage.getText();
 		expect(welcomeText).toContain('Good');
