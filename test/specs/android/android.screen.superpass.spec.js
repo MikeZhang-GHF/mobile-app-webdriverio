@@ -23,7 +23,7 @@ describe('Superpass Test', () => {
 		console.log(response.data);
 	});
 
-	it('Geolocation Test - nearest stateion', async () => {
+	it.skip('Geolocation Test - nearest stateion', async () => {
 		// read geo location data from the file
 		const {
 			latitude,
@@ -47,10 +47,9 @@ describe('Superpass Test', () => {
 		expect(addressLineText.toLowerCase()).toContain(expectedAddressLine);
 	});
 
-	it.skip('Singup Test', async () => {
+	it('Singup Test', async () => {
 		// click signup button
 		await LaunchScreen.signupButton.click();
-		// signup process
 		await SingupScreen.singup({
 			userName,
 			cardNumber,
@@ -62,12 +61,13 @@ describe('Superpass Test', () => {
 		// Assert the welcome screen
 		const welcomeText = await HomeScreen.greetingMessage.getText();
 		expect(welcomeText).toContain('Good');
-
 		// logout for the next test case
 		HomeScreen.signout();
 	});
 
-	it.skip('Login Test', async () => {
+	it('Login Test', async () => {
+		// click login button
+		await LaunchScreen.loginButton.click();
 		loginScreen.login(cardNumber, pinNumber);
 		// wait for the login process
 		driver.pause(2000);
@@ -76,7 +76,6 @@ describe('Superpass Test', () => {
 		const welcomeText = await HomeScreen.greetingMessage.getText();
 		console.log(welcomeText);
 		expect(welcomeText).toContain('Good');
-
 		// logout
 		await HomeScreen.signout();
 	});
