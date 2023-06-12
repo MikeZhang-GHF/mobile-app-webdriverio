@@ -27,7 +27,12 @@
     "wdio-chromedriver-service": "^8.1.1"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "android:perfecto": "npx wdio config/device_cloud/wdio.android.perfecto.conf.js",
+    "android:bitbar": "npx wdio config/device_cloud/wdio.android.bitbar.conf.js",
+    "android:local": "npx wdio config/local/wdio.android.conf.js",
+    "ios:perfecto": "npx wdio config/device_cloud/wdio.ios.perfecto.conf.js",
+    "ios:bitbar": "npx wdio config/device_cloud/wdio.ios.bitbar.conf.js",
+    "ios:local": "npx wdio config/local/wdio.ios.conf.js"
   },
   "dependencies": {
     "axios": "^1.4.0"

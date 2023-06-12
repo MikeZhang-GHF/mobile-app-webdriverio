@@ -1,5 +1,7 @@
 {
-  "latitude": "51.05635397469224",
-  "longitude": "-113.92802024655464",
-  "altitude": "0"
+  "nearestStation": {
+    "latitude": "51.05635397469224",
+    "longitude": "-113.92802024655464",
+    "altitude": "0"    
+  }
 }

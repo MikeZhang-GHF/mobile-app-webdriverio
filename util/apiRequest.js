@@ -16,5 +16,5 @@ export const deleteTestCard = async ( cardNumber, pinNumber ) => {
   const response = await axios.delete(
     `${baseUrl}/users/delete/${cardNumber}?pin=${pinNumber}`
   );
-  console.log(response.data);
+  return response
 }
