@@ -45,7 +45,11 @@ describe('SuperPass App Android Auth Test', () => {
 	} = require('../../test_data/phone.data.json');
 
 	after(async () => {
-		await deleteTestCard(cardNumber, pinNumber);
+		// Actions
+		const response = await deleteTestCard(cardNumber, pinNumber);
+		// Assert
+		expect(response.status).toBe(200);
+		// expect(response.result.cardNumber).toEqual(cardNumber);
 	});
 
 	it('should signup', async () => {
@@ -76,7 +80,7 @@ describe('SuperPass App Android Auth Test', () => {
 		// Actions
 		await LaunchScreen.loginButton.click();
 		await LoginScreen.login(cardNumber, password);
-		
+
 		// Assert
 		const welcomeText = await HomeScreen.greetingMessage.getText();
 		expect(welcomeText).toContain('Good');
