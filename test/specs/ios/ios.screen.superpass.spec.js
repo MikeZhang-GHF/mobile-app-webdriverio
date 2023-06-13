@@ -8,6 +8,7 @@ import {
 } from '../../../util/apiRequest';
 
 describe('SuperPass App Android Geolocation Test', () => {
+	// Allow the location permission
 	before( async () => {
 		await LaunchScreen.allowLocationButton.click();
 	});
