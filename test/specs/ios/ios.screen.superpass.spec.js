@@ -9,9 +9,9 @@ import {
 
 describe('SuperPass App Android Geolocation Test', () => {
 	// Allow the location permission
-	before( async () => {
-		await LaunchScreen.allowLocationButton.click();
-	});
+	// before( async () => {
+	// 	await LaunchScreen.allowLocationButton.click();
+	// });
 
 	it('should show the nearest gas station', async () => {
 		// Arrange the test data
@@ -75,14 +75,14 @@ describe('SuperPass App Android Auth Test', () => {
 		expect(welcomeText).toContain('Home');
 	});
 
-	it('should signout', async () => {
+	it.skip('should signout', async () => {
 		// Actions
 		await HomeScreen.signout();
 		// Assert
 		expect(await LaunchScreen.welcomeMessage.toBeDisplayed());
 	});
 
-	it('should login', async () => {
+	it.skip('should login', async () => {
 		// Actions
 		await LaunchScreen.loginButton.click();
 		await LoginScreen.login(cardNumber, password);

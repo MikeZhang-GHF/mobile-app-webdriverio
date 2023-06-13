@@ -7,10 +7,7 @@ const path = require('path');
 // Specify Test Files
 // ==================
 config.specs = [
-	path.join(
-		process.cwd(),
-		'./test/specs/ios/ios.keywords.superpass.rf.spec.js'
-	),
+	path.join(process.cwd(), './test/specs/ios/ios.screen.superpass.spec.js'),
 ];
 
 // ============
