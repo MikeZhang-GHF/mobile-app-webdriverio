@@ -1,14 +1,16 @@
 class LoginScreen {
+	appID = '//*[@resource-id="com.petrocanada.commercial_drivers.android:id/';
+
 	get cardNumberInput() {
-		return $('//XCUIElementTypeSecureTextField');
+		return $(this.appID + 'cardInput"]');
 	}
 
 	get passwordInput() {
-		return $('//XCUIElementTypeSecureTextField');
+		return $(this.appID + 'passwordInput"]');
 	}
 
 	get signinButton() {
-		return $('//*[@label="SIGN IN"]');
+		return $(this.appID + 'login"]');
 	}
 
 	async login(cardNumber, password) {
