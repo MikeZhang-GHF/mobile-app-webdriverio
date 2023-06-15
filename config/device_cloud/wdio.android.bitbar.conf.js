@@ -7,7 +7,10 @@ const path = require('path');
 // Specify Test Files
 // ==================
 config.specs = [
-	path.join(process.cwd(), './test/specs/android/*superpass-3.spec.js'),
+	path.join(
+		process.cwd(),
+		'./test/specs/android/android.keywords.superpass.spec.js'
+	),
 ];
 
 // ============
@@ -16,6 +19,10 @@ config.specs = [
 config.capabilities = [
 	{
 		'appium:bitbar_apiKey': process.env.BITBAR_API_KEY,
+		// 'bitbar:options': {
+		// 	source: 'appiumdesktop',
+		// 	apiKey: process.env.BITBAR_API_KEY,
+		// },
 		'appium:bitbar_device': 'Samsung Galaxy S20 SM-G981U1 12.0 -US',
 		'appium:bitbar_app': '188649335',
 		'appium:bitbar_project': 'SuperPass',

@@ -57,7 +57,7 @@ class SingupScreen {
 		await this.pinNumberInput.setValue(pinNumber);
 		await this.confirmButton.click();
 		// wait for the OTP and input the OTP
-		driver.pause(2000);
+		await driver.pause(2000);
 		await this.phoneInput.setValue(phoneNumber);
 		await this.confirmButton.click();
 		// wait for the OTP
@@ -65,7 +65,7 @@ class SingupScreen {
 		await driver.pause(timeForOTP);
 		await this.allowOTPButton.click();
 		await this.confirmButton.click();
-		driver.pause(2000);
+		await driver.pause(2000);
 		// input password and confirm password
 		await this.passwordInput.setValue(password);
 		await this.confirmInput.setValue(password);
@@ -76,11 +76,11 @@ class SingupScreen {
 			await this.confirmButton.click();
 			successTextView = await this.successTitle.getText();
 			if (successTextView.includes('Success')) break;
-			driver.pause(500);
+			await driver.pause(500);
 		}
 
 		await this.confirmButton.click();
-		driver.pause(2000);
+		await driver.pause(2000);
 	}
 }
 

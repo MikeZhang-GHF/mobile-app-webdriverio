@@ -33,6 +33,10 @@ class SingupScreen {
 		return $('//*[@label="suggestion"]');
 	}
 
+	get inputOTP() {
+		return $('//XCUIElementTypeTextField');
+	}
+
 	get passwordInput() {
 		return $(
 			'//XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeSecureTextField[1]'
@@ -56,29 +60,24 @@ class SingupScreen {
 		await this.pinNumberInput.setValue(pinNumber);
 		await this.confirmButton.click();
 		// wait for the OTP and input the OTP
-		driver.pause(2000);
+		await driver.pause(2000);
 		await this.phoneInput.setValue(phoneNumber);
 		await this.confirmButton.click();
 		// wait for the OTP
 		const timeForOTP = 7000;
 		await driver.pause(timeForOTP);
+		await this.inputOTP.click();
 		await this.allowOTPButton.click();
 		await this.confirmButton.click();
-		driver.pause(2000);
+		await driver.pause(2000);
 		// input password and confirm password
 		await this.passwordInput.setValue(password);
 		await this.confirmInput.setValue(password);
 		// submit the form and wait for the success message
-		const maxRetry = 100;
-		let successTextView = '';
-		for (let i = 0; i < maxRetry; i++) {
-			successTextView = await this.successTitle.getText();
-			if (successTextView.includes('Success')) break;
-			driver.pause(500);
-		}
-
 		await this.confirmButton.click();
-		driver.pause(2000);
+		await driver.pause(10000);  // TODO: remove this pause
+		await this.confirmButton.click();
+		await driver.pause(2000);
 	}
 }
 

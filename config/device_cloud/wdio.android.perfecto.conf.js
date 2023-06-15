@@ -7,8 +7,8 @@ const path = require('path');
 // Specify Test Files
 // ==================
 config.specs = [
-	// path.join(process.cwd(), './test/specs/android/*.screen.superpass.spec.js'),
-	path.join(process.cwd(), './test/specs/android/android.keywords.superpass.refactored.spec.js'),
+	path.join(process.cwd(), './test/specs/android/*.screen.superpass.spec.js'),
+	// path.join(process.cwd(), './test/specs/android/android.keywords.superpass.refactored.spec.js'),
 ];
 
 // ============

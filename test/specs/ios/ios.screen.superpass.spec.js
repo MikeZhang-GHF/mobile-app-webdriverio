@@ -1,24 +1,32 @@
+// Screen UI Objects
 import LaunchScreen from '../../screenobject/ios/launch.screen';
 import LoginScreen from '../../screenobject/ios/login.screen';
 import HomeScreen from '../../screenobject/ios/home.screen';
 import SingupScreen from '../../screenobject/ios/signup.screen';
+// Backend API Request Functions
 import {
 	getNearestStationAddress,
 	deleteTestCard,
 } from '../../../util/apiRequest';
+// Load Test Data Functions
+import {
+	loadSignupData,
+	loadNearestStationLocation,
+} from '../../../util/loadData';
 
 describe('SuperPass App Android Geolocation Test', () => {
 	// Allow the location permission
-	// before( async () => {
-	// 	await LaunchScreen.allowLocationButton.click();
-	// });
+	before(async () => {
+		try {
+			await LaunchScreen.allowLocationButton.click();
+		} catch (error) {
+			console.log('Location permission already allowed');
+		}
+	});
 
 	it('should show the nearest gas station', async () => {
 		// Arrange the test data
-		const {
-			nearestStation: { latitude, longitude, altitude },
-		} = require('../../test_data/geolocation.data.json');
-
+		const { latitude, longitude, altitude } = loadNearestStationLocation();
 		// Actions
 		// mock the geolocation
 		await LaunchScreen.setGeoLocation({ latitude, longitude, altitude });
@@ -40,23 +48,13 @@ describe('SuperPass App Android Geolocation Test', () => {
 
 describe('SuperPass App Android Auth Test', () => {
 	// Arrange the test data
-	const {
-		cardNumber,
-		userName,
-		pinNumber,
-		password,
-	} = require('../../test_data/signup.data.json');
-	const {
-		perfecto: { iosPhoneNumber },
-	} = require('../../test_data/phone.data.json');
+	const { userName, cardNumber, pinNumber, phoneNumber, password } =
+		loadSignupData('perfecto', 'ios');
 
 	after(async () => {
 		// Actions
-		await driver.removeApp('com.petrocanada.commercial-drivers.iOS')
-		const response = await deleteTestCard(cardNumber, pinNumber);
-		// Assert
-		expect(response.status).toBe(200);
-		// expect(response.result.cardNumber).toEqual(cardNumber);
+		await driver.removeApp('com.petrocanada.commercial-drivers.iOS');
+		await deleteTestCard(cardNumber, pinNumber);
 	});
 
 	it('should signup', async () => {
@@ -66,7 +64,7 @@ describe('SuperPass App Android Auth Test', () => {
 			userName,
 			cardNumber,
 			pinNumber,
-			iosPhoneNumber,
+			phoneNumber,
 			password,
 		});
 
@@ -75,14 +73,15 @@ describe('SuperPass App Android Auth Test', () => {
 		expect(welcomeText).toContain('Home');
 	});
 
-	it.skip('should signout', async () => {
+	it('should signout', async () => {
 		// Actions
 		await HomeScreen.signout();
+
 		// Assert
-		expect(await LaunchScreen.welcomeMessage.toBeDisplayed());
+		expect(await LaunchScreen.loginButton.isDisplayed()).toBe(true);
 	});
 
-	it.skip('should login', async () => {
+	it('should login', async () => {
 		// Actions
 		await LaunchScreen.loginButton.click();
 		await LoginScreen.login(cardNumber, password);

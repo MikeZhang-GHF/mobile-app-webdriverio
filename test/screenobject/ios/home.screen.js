@@ -22,7 +22,7 @@ class HomeScreen {
 	async signout() {
 		await this.accountButton.click();
 		await this.signoutButton.click();
-		await this.confirmSignoutButton.click();
+		// await this.confirmSignoutButton.click();
 	}
 }
 

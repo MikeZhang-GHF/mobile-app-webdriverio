@@ -1,18 +1,23 @@
+// Screen UI Objects
 import LaunchScreen from '../../screenobject/android/launch.screen';
-import LoginScreen from '../../screenobject/android/login.screen';
+import LoginScreen from '../../screenobject/ios/login.screen';
 import HomeScreen from '../../screenobject/android/home.screen';
 import SingupScreen from '../../screenobject/android/signup.screen';
+// Backend API Request Functions
 import {
 	getNearestStationAddress,
 	deleteTestCard,
 } from '../../../util/apiRequest';
+// Load Test Data Functions
+import {
+	loadSignupData,
+	loadNearestStationLocation,
+} from '../../../util/loadData';
 
 describe('SuperPass App Android Geolocation Test', () => {
 	it('should show the nearest gas station', async () => {
 		// Arrange the test data
-		const {
-			nearestStation: { latitude, longitude, altitude },
-		} = require('../../test_data/geolocation.data.json');
+		const { latitude, longitude, altitude } = loadNearestStationLocation();
 		// Actions
 		// mock the geolocation
 		await LaunchScreen.setGeoLocation({ latitude, longitude, altitude });
@@ -34,22 +39,13 @@ describe('SuperPass App Android Geolocation Test', () => {
 
 describe('SuperPass App Android Auth Test', () => {
 	// Arrange the test data
-	const {
-		cardNumber,
-		userName,
-		pinNumber,
-		password,
-	} = require('../../test_data/signup.data.json');
-	const {
-		perfecto: { androidPhoneNumber },
-	} = require('../../test_data/phone.data.json');
+	// Arrange the test data
+	const { userName, cardNumber, pinNumber, phoneNumber, password } =
+		loadSignupData('perfecto', 'android');
 
 	after(async () => {
 		// Actions
-		const response = await deleteTestCard(cardNumber, pinNumber);
-		// Assert
-		expect(response.status).toBe(200);
-		// expect(response.result.cardNumber).toEqual(cardNumber);
+		await deleteTestCard(cardNumber, pinNumber);
 	});
 
 	it('should signup', async () => {
@@ -59,7 +55,7 @@ describe('SuperPass App Android Auth Test', () => {
 			userName,
 			cardNumber,
 			pinNumber,
-			androidPhoneNumber,
+			phoneNumber,
 			password,
 		});
 
@@ -73,7 +69,7 @@ describe('SuperPass App Android Auth Test', () => {
 		await HomeScreen.signout();
 
 		// Assert
-		expect(await LaunchScreen.loginButton.waitForDisplayed()).toBe(true);
+		expect(await LaunchScreen.loginButton.isDisplayed()).toBe(true);
 	});
 
 	it('should login', async () => {

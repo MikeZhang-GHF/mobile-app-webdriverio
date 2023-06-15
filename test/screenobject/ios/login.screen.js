@@ -1,22 +1,30 @@
 class LoginScreen {
-	appID = '//*[@resource-id="com.petrocanada.commercial_drivers.android:id/';
-
 	get cardNumberInput() {
-		return $(this.appID + 'cardInput"]');
+		return $('//*[@type="XCUIElementTypeTextField"]');
 	}
 
 	get passwordInput() {
-		return $(this.appID + 'passwordInput"]');
+		return $('//*[@type="XCUIElementTypeSecureTextField"]');
+	}
+
+	get doneButton() {
+		return $('//*[@label="Done"]');
 	}
 
 	get signinButton() {
-		return $(this.appID + 'login"]');
+		return $('//*[@label="SIGN IN"]');
 	}
 
 	async login(cardNumber, password) {
-		// await this.cardNumberInput.setValue(cardNumber);
+		const isCardNumberInputEnabled = await this.cardNumberInput.isEnabled();
+		// Check if the card number input is enabled
+		if (isCardNumberInputEnabled) {
+			await this.cardNumberInput.setValue(cardNumber);
+		}
 		await this.passwordInput.setValue(password);
+		await this.doneButton.click();
 		await this.signinButton.click();
+		await driver.pause(2000);
 	}
 }
 

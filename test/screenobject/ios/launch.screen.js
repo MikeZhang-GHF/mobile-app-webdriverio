@@ -12,7 +12,7 @@ class LaunchScreen {
 	}
 
 	get allowLocationButton() {
-		return $('//*[@text="Allow only while using the app"]');
+		return $('//*[@label="Allow While Using App"]');
 	}
 
 	get locationTitleText() {

@@ -59,9 +59,8 @@ describe('SuperPass App Android Auth Test', () => {
 		pinNumber,
 		password,
 	} = require('../../test_data/signup.data.json');
-	const {
-		perfecto: { androidPhoneNumber },
-	} = require('../../test_data/phone.data.json');
+	const perfecto = require('../../test_data/phone.data.json');
+	const phoneNumber = perfecto.androidPhoneNumber;
 
 	// Tear down the test data
 	after(async () => {
@@ -85,7 +84,7 @@ describe('SuperPass App Android Auth Test', () => {
 		await $(appID + 'button"]').click();
 		// wait for the OTP and input the OTP
 		driver.pause(3000);
-		await $(appID + 'phoneInput"]').setValue(androidPhoneNumber);
+		await $(appID + 'phoneInput"]').setValue(phoneNumber);
 		await $(appID + 'button"]').click();
 		const timeForOTP = 7000;
 		await driver.pause(timeForOTP);

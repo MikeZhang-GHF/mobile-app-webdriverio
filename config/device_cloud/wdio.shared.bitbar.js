@@ -1,7 +1,8 @@
 exports.config = {
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     // runner: 'local',
-    hostname: 'us-west-mobile-hub.bitbar.com',
+    // hostname: 'us-west-mobile-hub.bitbar.com',
+    hostname: 'appium.bitbar.com',
     port: 443,
     path: '/wd/hub',
     protocol: 'https',
