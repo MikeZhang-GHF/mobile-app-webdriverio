@@ -1,3 +1,4 @@
+@smoke
 Feature: Signup with Superpass Card
   As a user with a Superpass card
   I want to signup for the app

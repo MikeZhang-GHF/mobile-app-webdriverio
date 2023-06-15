@@ -5,8 +5,20 @@ This is DevOps Mobile App Test Automation Framework in JavaScript
 - Install nodejs
 - Install appium
 - Install appium drivers and plugins
-- Install appium-desktop
-- Install android studio
+- Install appium-desktop for object spy
+- Install android studio if you want to run tests on Android locally
+
+### WebdriverIO Setup
+- Go to the project folder
+```sh
+npm init wdio .
+```
+- Follow the instructions to setup the project from WebdriverIO
+> choose Mocha if you run keyword driven tests
+> choose Cucumber if you run BDD tests
+> No compiler
+> Choose **appium** as the service to your test setup
+> Yes to run `npm install`
 
 #### Run Appium Server Locally
 - Run appium server

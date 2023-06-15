@@ -1,3 +1,4 @@
+@regression
 Feature: Nearby Service Station
     The user can find the nearby service stations
 

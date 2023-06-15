@@ -1,3 +1,4 @@
+@smoke
 Feature: Login
   As a user with a Superpass card
   I want to login to the app
