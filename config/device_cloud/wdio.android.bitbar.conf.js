@@ -9,7 +9,7 @@ const path = require('path');
 config.specs = [
 	path.join(
 		process.cwd(),
-		'./test/specs/android/android.keywords.superpass.spec.js'
+		'./test/specs/android/android.bitbar.connection.spec.js'
 	),
 ];
 
@@ -18,17 +18,16 @@ config.specs = [
 // ============
 config.capabilities = [
 	{
-		'appium:bitbar_apiKey': process.env.BITBAR_API_KEY,
-		// 'bitbar:options': {
-		// 	source: 'appiumdesktop',
-		// 	apiKey: process.env.BITBAR_API_KEY,
-		// },
-		'appium:bitbar_device': 'Samsung Galaxy S20 SM-G981U1 12.0 -US',
+		'bitbar:options': {
+			'apiKey': process.env.BITBAR_API_KEY,
+			'device': 'Google Pixel 6 Android 13',
+			'appiumVersion': '2.0',
+		},
 		'appium:bitbar_app': '188649335',
 		'appium:bitbar_project': 'SuperPass',
 		'appium:bitbar_testrun': 'Login',
 		'appium:platformName': 'Android',
-		'appium:automationName': 'Appium',
+		'appium:automationName': 'UiAutomator2',
 		'appium:appPackage': 'com.petrocanada.commercial_drivers.android',
 		'appium:autoGrantPermissions': true,
 	},

@@ -1,3 +1,10 @@
+/**
+ *  This is a basic keyword-driven test for SuperPass App, whichi is a starting point.
+ *  A better structure and design will be demonstrated in *.refactored.spec.js.
+ *  A best practice is to use Page Object Model (POM) to organize the test code, which is 
+ *  demonstrated in *.screen.spec.js.
+ */
+
 import axios from 'axios';
 
 describe('SuperPass App Android Geolocation Test', () => {

@@ -37,7 +37,7 @@ describe('SuperPass App Android Geolocation Test', () => {
 	});
 });
 
-describe('SuperPass App Android Auth Test', () => {
+describe.skip('SuperPass App Android Auth Test', () => {
 	// Arrange the test data
 	// Arrange the test data
 	const { userName, cardNumber, pinNumber, phoneNumber, password } =

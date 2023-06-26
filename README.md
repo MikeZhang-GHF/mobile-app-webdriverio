@@ -14,8 +14,8 @@ This is DevOps Mobile App Test Automation Framework in JavaScript
 npm init wdio .
 ```
 - Follow the instructions to setup the project from WebdriverIO
-> choose Mocha if you run keyword driven tests
-> choose Cucumber if you run BDD tests
+> Choose Mocha if you run keyword driven tests
+> Choose Cucumber if you run BDD tests
 > No compiler
 > Choose **appium** as the service to your test setup
 > Yes to run `npm install`
