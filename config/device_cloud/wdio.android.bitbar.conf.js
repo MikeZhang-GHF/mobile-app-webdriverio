@@ -20,7 +20,7 @@ config.capabilities = [
 	{
 		'bitbar:options': {
 			'apiKey': process.env.BITBAR_API_KEY,
-			'device': 'Google Pixel 6 Android 13',
+			'device': 'Google Pixel 6 Android 13 -US',
 			'appiumVersion': '2.0',
 		},
 		'appium:bitbar_app': '188649335',

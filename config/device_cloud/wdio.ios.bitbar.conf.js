@@ -14,14 +14,15 @@ config.specs = [path.join(process.cwd(), './test/specs/ios/*superpass.spec.js')]
 // ============
 config.capabilities = [
 	{
+		'bitbar:options': {
+			'apiKey': process.env.BITBAR_API_KEY,
+			'device': 'Apple iPhone 13 Pro A2638 15.2.1 -SU',
+			'appiumVersion': '2.0',
+		},
 		'platformName': 'iOS',
-		'appium:deviceName': '00008110-00090CD90161801E',
-		'appium:platformVersion': '15.1.1',
-		'perfecto:iOSResign': true,
-		'appium:app': 'PRIVATE:WholesaleSurpass.ipa',
+		'appium:bitbar_app': '188649335',
 		'appium:autoGrantPermissions': true,
 		'appium:autoAcceptAlerts': true,
-		'perfecto:securityToken': process.env.PERFECTO_SECURITY_TOKEN,
 	},
 ];
 
