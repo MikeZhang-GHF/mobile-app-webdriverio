@@ -20,15 +20,18 @@ config.capabilities = [
 	{
 		'bitbar:options': {
 			'apiKey': process.env.BITBAR_API_KEY,
-			'device': 'Google Pixel 6 Android 13 -US',
+			'device': 'Google Pixel 5 Android 12 -US',
+			'app': '188649335',
+			'project': 'SuperPass',
+			'testrun': 'Login',
 			'appiumVersion': '2.0',
 		},
-		'appium:bitbar_app': '188649335',
-		'appium:bitbar_project': 'SuperPass',
-		'appium:bitbar_testrun': 'Login',
+		// 'appium:bitbar_app': '188649335',
+		// 'appium:bitbar_project': 'SuperPass',
+		// 'appium:bitbar_testrun': 'Login',
 		'appium:platformName': 'Android',
 		'appium:automationName': 'UiAutomator2',
-		'appium:appPackage': 'com.petrocanada.commercial_drivers.android',
+		// 'appium:appPackage': 'com.petrocanada.commercial_drivers.android',
 		'appium:autoGrantPermissions': true,
 	},
 ];
